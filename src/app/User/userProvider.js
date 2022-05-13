@@ -56,3 +56,12 @@ exports.accountCheck = async function (email) {
 
   return userAccountResult;
 };
+
+//유저 status 확인
+exports.checkUserStatus = async function(userIdx) {
+  const connection = await pool.getConnection(async (conn) => conn);
+  const userStatusResult = await userDao.selectUserStatus(connection, userIdx);
+  connection.release();
+
+  return userStatusResult[0].status;
+}

@@ -89,6 +89,28 @@ exports.postUsers = async function (req, res) {
     }));
 }
 
+/*
+    API No. 3.4
+    API Name: 유저 삭제 API
+    [PATCH] /posts/:postIdx/status
+*/
+exports.patchUserStatus = async function (req, res) {
+    /*
+        Path Variable: userIdx
+    */
+    const userIdx = req.params.userIdx;
+    
+    if (!userIdx) {
+        return res.send(errResponse(baseResponse.USER_USERIDX_EMPTY));
+    } else if (postIdx <= 0) {
+        return res.send(errResponse(baseResponse.USER_USERIDX_LENGTH));
+    }
+
+    const editUserStatusResponse = await userService.editUserStatus(userIdx);
+
+    return res.send(editUserStatusResponse);
+}
+
 /**
  * API No. 3
  * API Name : 특정 유저 조회 API

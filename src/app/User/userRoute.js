@@ -24,6 +24,8 @@ module.exports = function(app){
 
     // 1.3 유저 피드 조회 api
     app.get('/users/:userIdx', user.getUserFeed);
+    // 1.4 유저 삭제 API
+    app.patch('/users/:userIdx/status', user.patchUserStatus);
 };
 
 

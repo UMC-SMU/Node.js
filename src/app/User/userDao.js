@@ -92,6 +92,32 @@ async function updateUserInfo(connection, id, nickname) {
   return updateUserRow[0];
 }
 
+//유저 status 반환
+async function selectUserStatus(connection, userIdx) {
+  const selectUserStatusQuery = `
+      SELECT status
+      FROM User
+      WHERE userIdx = ?;
+  `;
+
+  const [userStatusRow] = await connection.query(selectUserStatusQuery, userIdx);
+
+  return userStatusRow;
+}
+
+//status가 ACTIVE인 user를 INACTIVE로 변경
+async function updateUserStatus(connection, userIdx) {
+  const updateUserStatusQuery = `
+      UPDATE User
+      SET status = 'INACTIVE'
+      WHERE userIdx = ?;
+  `;
+
+  const updateUserStatusRow = await connection.query(updateUserStatusQuery, userIdx);
+
+  return updateUserStatusRow[0];
+}
+
 
 module.exports = {
   selectUser,
@@ -101,4 +127,6 @@ module.exports = {
   selectUserPassword,
   selectUserAccount,
   updateUserInfo,
+  selectUserStatus,
+  updateUserStatus
 };
