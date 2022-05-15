@@ -102,7 +102,7 @@ exports.patchUserStatus = async function (req, res) {
     
     if (!userIdx) {
         return res.send(errResponse(baseResponse.USER_USERIDX_EMPTY));
-    } else if (postIdx <= 0) {
+    } else if (userIdx <= 0) {
         return res.send(errResponse(baseResponse.USER_USERIDX_LENGTH));
     }
 
