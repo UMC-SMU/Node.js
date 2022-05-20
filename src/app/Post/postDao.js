@@ -66,9 +66,71 @@ async function selectPostImgs(connection, postIdx) {
     return postImgRows;
 }
 
+async function insertPost(connection, insertPostParams) {
+    const insertPostQuery = `
+        INSERT INTO Post(userIdx, content)
+        VALUES (?, ?);
+    `;
+
+    const insertPostRow = await connection.query(insertPostQuery, insertPostParams);
+
+    return insertPostRow;
+};
+
+async function insertPostImg(connection, insertPostImgParams) {
+    const insertPostImgQuery = `
+        INSERT INTO PostImgUrl(postIdx, imgUrl)
+        VALUES (?, ?);
+    `;
+
+    const insertPostImgRow = await connection.query(insertPostImgQuery, insertPostImgParams);
+
+    return insertPostImgRow;
+}
+
+async function updatePost(connection, editPostParams) {
+    const updatePostQuery = `
+        UPDATE Post
+        SET content = ?
+        WHERE postIdx = ?;
+    `;
+
+    const updatePostRow = await connection.query(updatePostQuery, editPostParams);
+
+    return updatePostRow;
+}
+
+async function updatePostStatus(connection, postIdx) {
+    const updatePostStatusQuery = `
+        UPDATE Post
+        SET status = 'INACTIVE'
+        WHERE postIdx = ?;
+    `;
+
+    const updatePostStatusRow = await connection.query(updatePostStatusQuery, postIdx);
+
+    return updatePostStatusRow[0];
+}
+
+async function selectPostStatus(connection, postIdx) {
+    const selectPostStatusQuery = `
+        SELECT status
+        FROM Post
+        WHERE postIdx = ?;
+    `;
+
+    const [postStatusRow] = await connection.query(selectPostStatusQuery, postIdx);
+
+    return postStatusRow;
+}
 
 module.exports = {
     selectUserPosts,
     selectPosts,
-    selectPostImgs
+    selectPostImgs,
+    insertPost,
+    insertPostImg,
+    updatePost,
+    updatePostStatus,
+    selectPostStatus
 }

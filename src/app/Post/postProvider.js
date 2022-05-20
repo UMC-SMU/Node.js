@@ -23,3 +23,11 @@ exports.retrievePostLists = async function(userIdx) {
     connection.release();
     return postListResult;
 }
+
+exports.checkPostStatus = async function(postIdx) {
+    const connection = await pool.getConnection(async (conn) => conn);
+    const postStatusResult = await postDao.selectPostStatus(connection, postIdx);
+
+    connection.release();
+    return postStatusResult[0].status;
+}

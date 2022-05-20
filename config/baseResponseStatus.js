@@ -34,6 +34,11 @@ module.exports = {
 
     USER_USERIDX_EMPTY : { "isSuccess": false, "code": 2019, "message": "userIdx를 입력해주세요." },
     USER_USERIDX_LENGTH : { "isSuccess": false, "code": 2020, "message": "userIdx는 0보다 큰 값으로 입력해주세요." },
+    POST_POSTIDX_EMPTY : { "isSuccess": false, "code": 2021, "message": "postIdx를 입력해주세요."},
+    POST_POSTIDX_LENGTH : { "isSuccess": false, "code": 2022, "message": "postIdx는 0보다 큰 값으로 입력해주세요"},
+    POST_CONTENT_LENGTH : { "isSuccess": false, "code": 2023, "message": "content의 길이는 450 이하로 입력해주세요." },
+    POST_CONTENT_EMPTY : { "isSuccess": false, "code": 2024, "message": "content를 입력해주세요." },
+    POST_POSTIMGURLS_EMPTY : { "isSuccess": false, "code": 2021, "message": "postImgUrls를 입력해주세요." },
 
     // Response error
     SIGNUP_REDUNDANT_EMAIL : { "isSuccess": false, "code": 3001, "message":"중복된 이메일입니다." },
@@ -43,6 +48,7 @@ module.exports = {
     SIGNIN_PASSWORD_WRONG : { "isSuccess": false, "code": 3004, "message": "비밀번호가 잘못 되었습니다." },
     SIGNIN_INACTIVE_ACCOUNT : { "isSuccess": false, "code": 3005, "message": "비활성화 된 계정입니다. 고객센터에 문의해주세요." },
     SIGNIN_WITHDRAWAL_ACCOUNT : { "isSuccess": false, "code": 3006, "message": "탈퇴 된 계정입니다. 고객센터에 문의해주세요." },
+    POST_STATUS_INACTIVE : {"isSuccess": false, "code": 3007, "message": "이미 삭제된 게시물 입니다."},
 
     //Connection, Transaction 등의 서버 오류
     DB_ERROR : { "isSuccess": false, "code": 4000, "message": "데이터 베이스 에러"},
