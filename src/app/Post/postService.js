@@ -20,10 +20,15 @@ exports.createPost = async function(userIdx, content, postImgUrls) {
             const postImgResult = await postDao.insertPostImg(connection, insertPostImgParams);
         }
        
+
+        await connection.commit();
+
         return response(baseResponse.SUCCESS, { addedPost: postIdx });
     } catch (err) {
         console.log(`App - createPost Service Error\n: ${err.message}`);
 
+        await connection.rollback();
+        
         return errResponse(baseResponse.DB_ERROR);
     } finally {
         connection.release();

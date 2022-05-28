@@ -1,11 +1,12 @@
 module.exports = function(app){
     const post = require('./postController');
+    const jwtMiddleware = require("../../../config/jwtMiddleware");
 
     //3.1 게시물 리스트 조회 API
     app.get('/posts', post.getPosts)
 
     //3.2 게시물 생성 API
-    app.post('/posts', post.postPosts)
+    app.post('/posts', jwtMiddleware, post.postPosts)
 
     // 3.3 게시물 수정 API
     app.patch('/posts/:postIdx', post.patchPost);

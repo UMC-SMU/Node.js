@@ -38,6 +38,12 @@ exports.postPosts = async function(req, res) {
     */
    const { userIdx, content, postImgUrls } = req.body;
 
+   const userIdxFromJWT = req.verifiedToken.userIdx;
+
+   if (userIdxFromJWT != userIdx) {
+    return res.send(errResponse(baseResponse.USER_ID_NOT_MATCH));
+    }
+
     if (!userIdx) {
         return res.send(errResponse(baseResponse.USER_USERIDX_EMPTY));
     } else if (postImgUrls.length <= 0) {

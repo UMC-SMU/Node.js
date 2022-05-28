@@ -39,6 +39,7 @@ module.exports = {
     POST_CONTENT_LENGTH : { "isSuccess": false, "code": 2023, "message": "content의 길이는 450 이하로 입력해주세요." },
     POST_CONTENT_EMPTY : { "isSuccess": false, "code": 2024, "message": "content를 입력해주세요." },
     POST_POSTIMGURLS_EMPTY : { "isSuccess": false, "code": 2021, "message": "postImgUrls를 입력해주세요." },
+    SIGNIN_PASSWORD_LENGTH : { "isSuccess": false, "code": 2026, "message": "비밀번호의 길이는 8자리 이상으로 입력해주세요." },
 
     // Response error
     SIGNUP_REDUNDANT_EMAIL : { "isSuccess": false, "code": 3001, "message":"중복된 이메일입니다." },
